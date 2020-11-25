@@ -83,11 +83,11 @@ def file_name(file_dir, typ):
     return files
 
 
-# 读图片
-# 转成灰度
-# 归一化到0-1
-# 归一化,用MNIST的标准差与平均值
-# 读取数字标签
+# read picture
+# convert to gray scale picture
+# normalize to (0,1)
+# normalize with average/SD from MNIST
+# read label number
 def readpng(filename, folder):
     img = cv2.imread(folder + filename)
     img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
