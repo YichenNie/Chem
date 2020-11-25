@@ -9,9 +9,7 @@
 '''
 
 # Imports
-import argparse
 import os
-import time
 from collections import OrderedDict
 
 import numpy as np
@@ -20,7 +18,6 @@ import cv2
 import torch
 import torch.utils.data as Data
 import torchvision
-import pickle as pkl
 from sklearn.metrics import accuracy_score, precision_score, recall_score, confusion_matrix
 from torch import nn
 from PIL import Image
