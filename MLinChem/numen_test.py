@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 
 '''
-    Modified: I. C. Nye
+    Author: Pengbo Song
+    Modified: Yichen Nie
     Date created: 11/6/2020
     Python Version: Anaconda3 (Python 3.8.3)
 '''
@@ -22,7 +23,6 @@ import torchvision
 import pickle as pkl
 from sklearn.metrics import accuracy_score, precision_score, recall_score, confusion_matrix
 from torch import nn
-from torchvision import transforms
 from PIL import Image
 
 
@@ -82,20 +82,7 @@ def file_name(file_dir, typ):
             # L.append(os.path.join(root, file))
     return files
 
-"""
-def image_loader(png, test_dir):
-    image_name = test_dir + png
-    image = Image.open(image_name).convert('L')
-    image = loader(image).unsqueeze(0)
-    
-    fn = list(png.split('_'))
-    num = fn[0].replace('num', '')
 
-    return image.to('cpu', torch.float), num
-"""
-
-
-loader = transforms.Compose([transforms.ToTensor()])
 # 读图片
 # 转成灰度
 # 归一化到0-1
@@ -113,8 +100,7 @@ def readpng(filename, folder):
     ])
     img_tensor = MNIST_normalizer(img_norm)
 
-    fn = list(filename.split('_'))
-    num = int(fn[0].replace('num', ''))
+    num = int(filename[3:4])
 
     return img_tensor, num
 
@@ -138,7 +124,7 @@ def read_dataset(filename, folder):
 
 
 def main():
-    print("Load model from model.pkl.")
+    print("Load model from fullmodel.pkl.")
     model = torch.load('fullmodel.pkl')
 
     test_dir = '../data/numgen/'
@@ -163,7 +149,7 @@ def main():
             labels = np.append(labels, label)
             pred = np.append(pred, category)
     acc = accuracy_score(labels, pred)
-    cm = confusion_matrix(labels, pred)
+    cm = confusion_matrix(labels, pred) 
     rec = recall_score(labels, pred, average='macro')
     prec = precision_score(labels, pred, average='macro')
 
