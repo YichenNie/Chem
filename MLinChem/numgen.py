@@ -1,20 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-'''
-    Modified: I. C. Nye
-    Date created: 11/23/2020
-    Python Version: Anaconda3 (Python 3.8.3)
-'''
-
 import os
 import random
-
 from PIL import Image, ImageDraw, ImageFont
 '''
 Author:     Yichen Nie
 Ref:        https://blog.csdn.net/five3/article/details/82464723
-Date create:11/23/2020
+Date created:11/23/2020
 '''
 
 def draw_num(new_img, num, font, fc):
